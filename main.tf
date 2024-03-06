@@ -16,10 +16,11 @@ module "workspace" {
   version = "0.8.0"
 
   description       = each.value.description
-  execution_mode    = each.value.execution_mode 
+  execution_mode    = each.value.execution_mode
   name              = each.key
   organization_name = var.organization_name
   project_id        = each.value.project_id
+  variables = try(each.value.variables, [])
 
 
   vcs_repo = {
